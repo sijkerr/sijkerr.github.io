@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "objectID": "posts/power-five-scheduling-non-conference-games/index.html",
+    "href": "posts/power-five-scheduling-non-conference-games/index.html",
+    "title": "Power 5 Non-Conference Scheduling",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Latest Posts",
-    "section": "",
-    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nNov 3, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nOct 31, 2025\n\n\nTristan O’Malley\n\n\n\n\n\nNo matching items"
+    "text": "Code\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.2\n✔ ggplot2   4.0.0     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nCode\np5 &lt;- read_csv(\"POWER 5 NON-CON QUAD BREAKDOWN.csv\")\n\n\nRows: 311 Columns: 11\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (2): TEAM, AT-LARGE BID\ndbl (9): SEASON, Q1, Q2, Q3, Q4, NCSOS, NCWIN%, AVG OPP NET RK, ROAD/NEUTRAL\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nCode\nbama &lt;- p5 |&gt; filter(TEAM == \"Alabama\")\nminn &lt;- p5 |&gt; filter(TEAM == \"Minnesota\")\ngtown &lt;- p5 |&gt; filter(TEAM == \"Georgetown\")\nunc &lt;- p5 |&gt; filter(TEAM == \"North Carolina\")\npurdue &lt;- p5 |&gt; filter(TEAM == \"Purdue\")\nnw &lt;- p5 |&gt; filter(TEAM == \"Northwestern\")\nprov &lt;- p5 |&gt; filter(TEAM == \"Providence\")\n\nggplot() + \n  scale_y_continuous(limits = c(-15, 15)) +\n  geom_line(data=p5, aes(x=SEASON, y=NCSOS, group=TEAM), color=\"lightgrey\") +\n  geom_line(data=bama, aes(x=SEASON, y=NCSOS, group=TEAM), color=\"#9E1B32\") +\n  geom_line(data=minn, aes(x=SEASON, y=NCSOS, group=TEAM), color=\"#FFC627\") +\n  geom_line(data=gtown, aes(x=SEASON, y=NCSOS, group=TEAM), color=\"#041E42\") +\n  geom_line(data=unc, aes(x=SEASON, y=NCSOS, group=TEAM), color=\"#007FAE\") +\n  geom_line(data=purdue, aes(x=SEASON, y=NCSOS, group=TEAM), color=\"#CFB991\") +\n  geom_line(data=nw, aes(x=SEASON, y=NCSOS, group=TEAM), color=\"#4E2A84\") +\n  geom_line(data=prov, aes(x=SEASON, y=NCSOS, group=TEAM), color=\"#8a8d8f\") +\n  annotate(\"text\", x=2022.5, y=11.5, label=\"Alabama\", colour=\"black\") +\n  annotate(\"text\", x=2024, y=-14, label=\"Minnesota\", colour=\"black\") +\n  annotate(\"text\", x=2024.75, y=-12.5, label=\"Georgetown\", colour=\"black\") +\n  annotate(\"text\", x=2024.75, y=14.25, label=\"North Carolina\", colour=\"black\") +\n  annotate(\"text\", x=2024, y=11.5, label=\"Purdue\", colour=\"black\") +\n  annotate(\"text\", x=2022.25, y=-11.5, label=\"Northwestern\", colour=\"black\") +\n  annotate(\"text\", x=2023, y=-10, label=\"Providence\", colour=\"black\") +\n  labs(title = \"Power 5 Teams Schedule Similarily from Year to Year\",\n       subtitle = \"Focusing on the Easiest and Hardest Schedule Each Year\",\n       caption = \"Source: KenPom | By Simon Kerr\") +\n  theme_minimal() +\n  theme(\n    plot.title = element_text(size = 19, face =\"bold\"),\n    axis.title = element_text(size = 8),\n    plot.subtitle = element_text(size = 10),\n    plot.title.position = \"plot\"\n  )"
   },
   {
     "objectID": "about.html",
@@ -21,10 +14,10 @@
     "text": "Page dedicated to using analytics to explain patterns in sports."
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Latest Posts",
     "section": "",
-    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+    "text": "Power 5 Non-Conference Scheduling\n\n\n\n\n\n\n\n\n\n\n\nNov 17, 2025\n\n\nSimon Kerr\n\n\n\n\n\nNo matching items"
   }
 ]
