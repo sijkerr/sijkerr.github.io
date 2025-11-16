@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Simon Kerr">
-<meta name="dcterms.date" content="2025-11-17">
+<meta name="dcterms.date" content="2025-11-16">
 
 <title>Power 5 Non-Conference Scheduling – Simon Kerr’s Sports Analytics</title>
 <style>
@@ -171,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 17, 2025</p>
+        <p class="date">November 16, 2025</p>
       </div>
     </div>
     
@@ -190,47 +190,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<p>Power Five basketball teams focus on making March Madness. For this evaluation, the Power Five includes the ACC, Big East, Big 12, Big 10, and SEC. The Pac-12 is also included from 2022-2024 (R.I.P.). The season is made up of 31 regular-season games. Depending on the conference, teams have either 11 or 13 games to schedule to strengthen their tournament resumes. Coaching staffs adopt different philosophies when choosing their opponents.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"POWER 5 NON-CON QUAD BREAKDOWN.csv"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>bama <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"Alabama"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>minn <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"Minnesota"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>gtown <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"Georgetown"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>unc <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"North Carolina"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>purdue <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"Purdue"</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>nw <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"Northwestern"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>prov <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"Providence"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">15</span>, <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>p5, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>bama, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#9E1B32"</span>) <span class="sc">+</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>minn, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#FFC627"</span>) <span class="sc">+</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>gtown, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#041E42"</span>) <span class="sc">+</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>unc, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#007FAE"</span>) <span class="sc">+</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>purdue, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#CFB991"</span>) <span class="sc">+</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>nw, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#4E2A84"</span>) <span class="sc">+</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>prov, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#8a8d8f"</span>) <span class="sc">+</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="fl">2022.5</span>, <span class="at">y=</span><span class="fl">11.5</span>, <span class="at">label=</span><span class="st">"Alabama"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">2024</span>, <span class="at">y=</span><span class="sc">-</span><span class="dv">14</span>, <span class="at">label=</span><span class="st">"Minnesota"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="fl">2024.75</span>, <span class="at">y=</span><span class="sc">-</span><span class="fl">12.5</span>, <span class="at">label=</span><span class="st">"Georgetown"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="fl">2024.75</span>, <span class="at">y=</span><span class="fl">14.25</span>, <span class="at">label=</span><span class="st">"North Carolina"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">2024</span>, <span class="at">y=</span><span class="fl">11.5</span>, <span class="at">label=</span><span class="st">"Purdue"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="fl">2022.25</span>, <span class="at">y=</span><span class="sc">-</span><span class="fl">11.5</span>, <span class="at">label=</span><span class="st">"Northwestern"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">2023</span>, <span class="at">y=</span><span class="sc">-</span><span class="dv">10</span>, <span class="at">label=</span><span class="st">"Providence"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Power 5 Teams Schedule Similarily from Year to Year"</span>,</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Focusing on the Easiest and Hardest Schedule Each Year"</span>,</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Source: KenPom | By Simon Kerr"</span>) <span class="sc">+</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">19</span>, <span class="at">face =</span><span class="st">"bold"</span>),</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pscl)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"POWER 5 NON-CON QUAD BREAKDOWN.csv"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>bama <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"Alabama"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>minn <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"Minnesota"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>gtown <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"Georgetown"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>unc <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"North Carolina"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>purdue <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"Purdue"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>nw <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"Northwestern"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>prov <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(TEAM <span class="sc">==</span> <span class="st">"Providence"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">15</span>, <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>p5, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>bama, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#9E1B32"</span>) <span class="sc">+</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>minn, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#FFC627"</span>) <span class="sc">+</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>gtown, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#041E42"</span>) <span class="sc">+</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>unc, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#007FAE"</span>) <span class="sc">+</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>purdue, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#CFB991"</span>) <span class="sc">+</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>nw, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#4E2A84"</span>) <span class="sc">+</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>prov, <span class="fu">aes</span>(<span class="at">x=</span>SEASON, <span class="at">y=</span>NCSOS, <span class="at">group=</span>TEAM), <span class="at">color=</span><span class="st">"#8a8d8f"</span>) <span class="sc">+</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="fl">2022.5</span>, <span class="at">y=</span><span class="fl">11.5</span>, <span class="at">label=</span><span class="st">"Alabama"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">2024</span>, <span class="at">y=</span><span class="sc">-</span><span class="dv">14</span>, <span class="at">label=</span><span class="st">"Minnesota"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="fl">2024.75</span>, <span class="at">y=</span><span class="sc">-</span><span class="fl">12.5</span>, <span class="at">label=</span><span class="st">"Georgetown"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="fl">2024.75</span>, <span class="at">y=</span><span class="fl">14.25</span>, <span class="at">label=</span><span class="st">"North Carolina"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">2024</span>, <span class="at">y=</span><span class="fl">11.5</span>, <span class="at">label=</span><span class="st">"Purdue"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="fl">2022.25</span>, <span class="at">y=</span><span class="sc">-</span><span class="fl">11.5</span>, <span class="at">label=</span><span class="st">"Northwestern"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">2023</span>, <span class="at">y=</span><span class="sc">-</span><span class="dv">10</span>, <span class="at">label=</span><span class="st">"Providence"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Power 5 Teams Schedule Similarily from Year to Year"</span>,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Focusing on the Easiest and Hardest Schedule Each Year"</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Source: KenPom | By Simon Kerr"</span>) <span class="sc">+</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">19</span>, <span class="at">face =</span><span class="st">"bold"</span>),</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -239,56 +244,999 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tourney <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="st">`</span><span class="at">NCWIN%</span><span class="st">`</span> <span class="sc">&gt;=</span> .<span class="dv">545</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">lm</span>(<span class="st">`</span><span class="at">NCWIN%</span><span class="st">`</span> <span class="sc">~</span> <span class="st">`</span><span class="at">NCSOS</span><span class="st">`</span>, <span class="at">data=</span>p5)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = `NCWIN%` ~ NCSOS, data = p5)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--0.63681 -0.09564  0.02433  0.10797  0.32358 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  0.732354   0.008980  81.555  &lt; 2e-16 ***
-NCSOS       -0.005287   0.001831  -2.888  0.00416 ** 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.1569 on 309 degrees of freedom
-Multiple R-squared:  0.02627,   Adjusted R-squared:  0.02312 
-F-statistic: 8.338 on 1 and 309 DF,  p-value: 0.004156</code></pre>
 </div>
+<p>Teams like North Carolina and Alabama, led by Hubert Davis and Nate Oats, respectively, have some of the toughest schedules year after year. Others, like Minnesota and Northwestern, have much easier non-conference opponents. These different approaches can both lead to tournament appearances. Tougher schedules allow for more losses because opponents are better. North Carolina went 7-5 out of conference in 2025, playing the hardest non-conference schedule of any Power Five team. Half of their opponents were in the first quadrant of the NCAA Evaluation Tool (NET) rankings. After a mediocre non-conference performance, the Tar Heels finished ACC play with a 13-7 record, tied for fourth. Ultimately, North Carolina made the NCAA Tournament, proving that a tough out-of-conference schedule with multiple losses was a successful formula.</p>
+<p>The opposite strategy is less forgiving. In 2025, Georgetown, led by Ed Cooley, went 9-2 out of conference, playing the easiest schedule of all Power Five teams. While North Carolina packed their schedule with quadrant one games, Georgetown played eight quadrant four games. The Hoyas then went 8-12 in the Big East, leading to a seventh-place finish in the conference. An overall record of 17-14 with weak non-conference opponents resulted in Cooley’s team missing March Madness. Fewer opportunities for big wins hurt Georgetown when they had a poor conference performance.</p>
+<p>To determine the most important factors for making the NCAA Tournament, a multiple binomial logistic regression was created. Nine potential variables were available to the model. After using a stepwise selection process, five variables were selected: conference winning percentage, non-conference winning percentage, and the number of games in quadrants one, two, and four. These chosen variables are the most important factors in determining if a team receives an at-large bid. The model created states that a team receiving an at-large bid is 75% explained by these five variables. The formula for the model is:</p>
+<p>-34.9273 + 23.3126*(Conference Winning Percentage) + 19.5297*(Non-Conference Winning Percentage) + 1.3951*(Q1 Games) + 1.1434*(Q2 Games) + .4345*(Q4 Games).</p>
+<p>Comparing the different teams would be challenging, so instead, the non-conference winning percentage was used as a predictor for the probability of a team receiving an at-large bid. Since there are multiple variables, the others must be held constant to demonstrate the effect of non-conference winning percentage. This factor was chosen because teams can construct their out-of-conference schedules to increase their winning percentage. Teams have no control over their opponents during conference play. Using the average from the dataset, this new model assumes a team goes .500 in conference play, and plays three quadrant one games, two quadrant two games, and six quadrant four games.</p>
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>p5, <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">NCWIN%</span><span class="st">`</span>, <span class="at">y=</span><span class="st">`</span><span class="at">NCSOS</span><span class="st">`</span>, <span class="at">color=</span><span class="st">`</span><span class="at">AT-LARGE BID</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color=</span><span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Changing Y and N to binomial values</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p5<span class="sc">$</span>AT_LARGE_BID <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p5<span class="sc">$</span>AT_LARGE_BID <span class="sc">==</span> <span class="st">"Y"</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Base model</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>int.mod <span class="ot">&lt;-</span> <span class="fu">glm</span>(AT_LARGE_BID <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data=</span>p5, <span class="at">family =</span> binomial)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Full model</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>full.mod <span class="ot">&lt;-</span> <span class="fu">glm</span>(AT_LARGE_BID <span class="sc">~</span> NCWIN_PCT <span class="sc">+</span> Q1 <span class="sc">+</span> Q2 <span class="sc">+</span> Q3 <span class="sc">+</span> Q4 <span class="sc">+</span> NCSOS <span class="sc">+</span> AVG_OPP_NET_RK <span class="sc">+</span> ROAD_NEUTRAL <span class="sc">+</span> CONF_WIN_PCT, <span class="at">data=</span>p5, <span class="at">family =</span> binomial)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Stepwise selection process</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(<span class="at">object =</span> int.mod, <span class="at">scope =</span> <span class="fu">list</span>(<span class="at">upper =</span> full.mod), </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">direction =</span> <span class="st">"both"</span>, <span class="at">k =</span> <span class="dv">2</span>, <span class="at">trace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Final model</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(AT_LARGE_BID <span class="sc">~</span> CONF_WIN_PCT <span class="sc">+</span> NCWIN_PCT <span class="sc">+</span> Q1 <span class="sc">+</span> Q2 <span class="sc">+</span> Q4, <span class="at">data =</span> p5,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">family =</span> binomial)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Looks at McFadden R^2 to show correlation</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">pR2</span>(model)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#Adding models prediction of receiving at-large bid to the dataset</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>p5<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">predict</span>(model, p5, <span class="at">type =</span> <span class="st">"response"</span>), <span class="dv">2</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#Compares the factors against each other with conference winning percentage, Q1 Games, Q2 Games, and Q3 games constant</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span>  <span class="fu">with</span>(<span class="fu">expand.grid</span>(</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                  <span class="at">NCWIN_PCT =</span> <span class="fu">round</span>(<span class="fu">seq</span>(<span class="fu">min</span>(NCWIN_PCT), <span class="fu">max</span>(NCWIN_PCT), <span class="at">length=</span><span class="dv">311</span>), <span class="dv">3</span>),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                  <span class="at">CONF_WIN_PCT =</span> .<span class="dv">5</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                ))</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">#Predicted probability for each value of non-conference winning percentage</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>newdata<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, newdata, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co">#Each different possibilty</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>eleven_wins <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NCWIN_PCT =</span> <span class="dv">1</span>, <span class="at">CONF_WIN_PCT =</span> .<span class="dv">500</span>, <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>)))</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>eleven_wins<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, eleven_wins, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>ten_wins <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NCWIN_PCT =</span> .<span class="dv">909</span>, <span class="at">CONF_WIN_PCT =</span> .<span class="dv">500</span>, <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>)))</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>ten_wins<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, ten_wins, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>nine_wins <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NCWIN_PCT =</span> .<span class="dv">818</span>, <span class="at">CONF_WIN_PCT =</span> .<span class="dv">500</span>, <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>)))</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>nine_wins<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, nine_wins, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>eight_wins <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NCWIN_PCT =</span> .<span class="dv">727</span>, <span class="at">CONF_WIN_PCT =</span> .<span class="dv">500</span>, <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>)))</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>eight_wins<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, eight_wins, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>seven_wins <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NCWIN_PCT =</span> .<span class="dv">636</span>, <span class="at">CONF_WIN_PCT =</span> .<span class="dv">500</span>, <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>)))</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>seven_wins<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, seven_wins, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>six_wins <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NCWIN_PCT =</span> .<span class="dv">545</span>, <span class="at">CONF_WIN_PCT =</span> .<span class="dv">500</span>, <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>)))</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>six_wins<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, six_wins, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>five_wins <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NCWIN_PCT =</span> .<span class="dv">454</span>, <span class="at">CONF_WIN_PCT =</span> .<span class="dv">500</span>, <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>)))</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>five_wins<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, five_wins, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>four_wins <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NCWIN_PCT =</span> .<span class="dv">363</span>, <span class="at">CONF_WIN_PCT =</span> .<span class="dv">500</span>, <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>)))</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>four_wins<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, four_wins, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>three_wins <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NCWIN_PCT =</span> .<span class="dv">272</span>, <span class="at">CONF_WIN_PCT =</span> .<span class="dv">500</span>, <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>)))</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>three_wins<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, three_wins, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>two_wins <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NCWIN_PCT =</span> .<span class="dv">181</span>, <span class="at">CONF_WIN_PCT =</span> .<span class="dv">500</span>, <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>)))</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>two_wins<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, two_wins, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>one_wins <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NCWIN_PCT =</span> .<span class="dv">090</span>, <span class="at">CONF_WIN_PCT =</span> .<span class="dv">500</span>, <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>)))</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>one_wins<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, one_wins, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>zero_wins <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NCWIN_PCT =</span> <span class="dv">0</span>, <span class="at">CONF_WIN_PCT =</span> .<span class="dv">500</span>, <span class="at">Q1 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q2 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q2, <span class="at">na.rm=</span><span class="cn">TRUE</span>)),</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>                                <span class="at">Q4 =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(p5<span class="sc">$</span>Q4, <span class="at">na.rm=</span><span class="cn">TRUE</span>)))</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>zero_wins<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, zero_wins, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>newdata, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">linewidth=</span><span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>eleven_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>eleven_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"11-0"</span>, NCWIN_PCT, pred), <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>ten_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>ten_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"10-1"</span>, NCWIN_PCT, pred), <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>nine_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>nine_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"9-2"</span>, NCWIN_PCT, pred), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>eight_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>eight_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"8-3"</span>, NCWIN_PCT, pred), <span class="at">hjust =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>seven_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>seven_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"7-4"</span>, NCWIN_PCT, pred), <span class="at">hjust =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>six_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>six_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"6-5"</span>, NCWIN_PCT, pred), <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>five_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>five_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"5-6"</span>, NCWIN_PCT, pred), <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>four_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>four_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"4-7"</span>, NCWIN_PCT, pred), <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>three_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>three_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"3-8"</span>, NCWIN_PCT, pred), <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>two_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>two_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"2-9"</span>, NCWIN_PCT, pred), <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>one_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>one_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"1-10"</span>, NCWIN_PCT, pred), <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>zero_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>zero_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"0-11"</span>, NCWIN_PCT, pred), <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Winning Non-Conference Games is Necessary to Receive an At-Large Bid"</span>,</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Assuming an even conference record, three quad 1 games, two quad 2 games, and six quad 4 games"</span>,</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Source: WarrenNolan, KenPom &amp; ESPN | By Simon Kerr"</span>,</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predicted Probability of At-Large Bid"</span>,</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Non-Conference Winning Percentage"</span>) <span class="sc">+</span></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span><span class="st">"bold"</span>),</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>If a team has an even conference record, its non-conference winning percentage becomes very important. Going undefeated in non-conference play almost guarantees an at-large bid, according to the model used. But dropping four games decreases the probability of receiving an at-large bid below fifteen percent.</p>
+<p>After examining all of these moving parts, how have recent bubble teams stood out to the selection committee?</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>out_2025 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(SEASON <span class="sc">==</span> <span class="dv">2025</span>, TEAM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"West Virginia"</span>, <span class="st">"Indiana"</span>, <span class="st">"Ohio State"</span>))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>out_2024 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(SEASON <span class="sc">==</span> <span class="dv">2024</span>, TEAM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oklahoma"</span>, <span class="st">"Seton Hall"</span>, <span class="st">"Pittsburgh"</span>))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>out_2023 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(SEASON <span class="sc">==</span> <span class="dv">2023</span>, TEAM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oklahoma State"</span>, <span class="st">"Rutgers"</span>, <span class="st">"North Carolina"</span>, <span class="st">"Clemson"</span>))</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>out_2022 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(SEASON <span class="sc">==</span> <span class="dv">2022</span>, TEAM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oklahoma"</span>, <span class="st">"Texas A&amp;M"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Changing binomial values back to Y and N</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p5<span class="sc">$</span>AT_LARGE_BID <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p5<span class="sc">$</span>AT_LARGE_BID <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Y"</span>, <span class="st">"N"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Chaning prediction to a percentage</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>p5<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">paste</span>(p5<span class="sc">$</span>pred<span class="sc">*</span><span class="dv">100</span>, <span class="st">"%"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>out_2025 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(SEASON <span class="sc">==</span> <span class="dv">2025</span>, TEAM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"West Virginia"</span>, <span class="st">"Indiana"</span>, <span class="st">"Ohio State"</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>out_2024 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(SEASON <span class="sc">==</span> <span class="dv">2024</span>, TEAM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oklahoma"</span>, <span class="st">"Seton Hall"</span>, <span class="st">"Pittsburgh"</span>))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>out_2023 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(SEASON <span class="sc">==</span> <span class="dv">2023</span>, TEAM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oklahoma State"</span>, <span class="st">"Rutgers"</span>, <span class="st">"North Carolina"</span>, <span class="st">"Clemson"</span>))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>out_2022 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(SEASON <span class="sc">==</span> <span class="dv">2022</span>, TEAM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oklahoma"</span>, <span class="st">"Texas A&amp;M"</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>in_2025 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(SEASON <span class="sc">==</span> <span class="dv">2025</span>, TEAM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"North Carolina"</span>, <span class="st">"Texas"</span>, <span class="st">"Xavier"</span>))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>in_2024 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(SEASON <span class="sc">==</span> <span class="dv">2024</span>, TEAM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Colorado"</span>, <span class="st">"Virginia"</span>))</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>in_2023 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(SEASON <span class="sc">==</span> <span class="dv">2023</span>, TEAM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Mississippi State"</span>, <span class="st">"Pittsburgh"</span>, <span class="st">"Arizona State"</span>))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>in_2022 <span class="ot">&lt;-</span> p5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(SEASON <span class="sc">==</span> <span class="dv">2022</span>, TEAM <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Indiana"</span>, <span class="st">"Notre Dame"</span>, <span class="st">"Rutgers"</span>))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>bubble_2025 <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(in_2025, out_2025)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>bubble_2024 <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(in_2024, out_2024)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>bubble_2023 <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(in_2023, out_2023)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>bubble_2022 <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(in_2022, out_2022)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>combined <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(bubble_2025, bubble_2024, bubble_2023, bubble_2022) <span class="sc">|&gt;</span> </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>AVG_OPP_NET_RK)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>combined <span class="sc">|&gt;</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(SEASON) <span class="sc">|&gt;</span> </span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">NCWIN_PCT =</span> <span class="st">"NCWIN%"</span>, <span class="at">CONF_WIN_PCT =</span> <span class="st">"CONF WIN%"</span>, <span class="at">ROAD_NEUTRAL =</span> <span class="st">"ROAD/NEUTRAL"</span>,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>             <span class="at">AT_LARGE_BID =</span> <span class="st">"AT LARGE BID"</span>, <span class="at">pred =</span> <span class="st">"MODEL CHANCE TO RECEIVE AT-LARGE BID"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"How do Bubble Teams Separate Themselves?"</span>,</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Each team's resume tells the story about their season"</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_row_striping</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"blue"</span>),</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"white"</span>)</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> AT_LARGE_BID <span class="sc">==</span> <span class="st">"Y"</span>)</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"**By:** Simon Kerr  |  **Source:** WarrenNolan, KenPom &amp; ESPN"</span>)</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output-display">
+<div id="rgvlgioddn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rgvlgioddn table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#rgvlgioddn thead, #rgvlgioddn tbody, #rgvlgioddn tfoot, #rgvlgioddn tr, #rgvlgioddn td, #rgvlgioddn th {
+  border-style: none;
+}
+
+#rgvlgioddn p {
+  margin: 0;
+  padding: 0;
+}
+
+#rgvlgioddn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rgvlgioddn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#rgvlgioddn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rgvlgioddn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rgvlgioddn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rgvlgioddn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rgvlgioddn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rgvlgioddn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rgvlgioddn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rgvlgioddn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rgvlgioddn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rgvlgioddn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rgvlgioddn .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#rgvlgioddn .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#rgvlgioddn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rgvlgioddn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rgvlgioddn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rgvlgioddn .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rgvlgioddn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rgvlgioddn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rgvlgioddn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rgvlgioddn .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#rgvlgioddn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rgvlgioddn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#rgvlgioddn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rgvlgioddn .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rgvlgioddn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rgvlgioddn .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rgvlgioddn .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rgvlgioddn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rgvlgioddn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rgvlgioddn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rgvlgioddn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rgvlgioddn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rgvlgioddn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rgvlgioddn .gt_left {
+  text-align: left;
+}
+
+#rgvlgioddn .gt_center {
+  text-align: center;
+}
+
+#rgvlgioddn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rgvlgioddn .gt_font_normal {
+  font-weight: normal;
+}
+
+#rgvlgioddn .gt_font_bold {
+  font-weight: bold;
+}
+
+#rgvlgioddn .gt_font_italic {
+  font-style: italic;
+}
+
+#rgvlgioddn .gt_super {
+  font-size: 65%;
+}
+
+#rgvlgioddn .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#rgvlgioddn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rgvlgioddn .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#rgvlgioddn .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#rgvlgioddn .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#rgvlgioddn .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#rgvlgioddn .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#rgvlgioddn .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#rgvlgioddn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="11" class="gt_heading gt_title gt_font_normal" style="text-align: left; color: #000000; font-weight: bold;">How do Bubble Teams Separate Themselves?</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="11" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="text-align: left; color: #000000;">Each team's resume tells the story about their season</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="TEAM" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">TEAM</th>
+<th id="Q1" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Q1</th>
+<th id="Q2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Q2</th>
+<th id="Q3" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Q3</th>
+<th id="Q4" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Q4</th>
+<th id="NCSOS" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">NCSOS</th>
+<th id="NCWIN_PCT" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">NCWIN%</th>
+<th id="CONF_WIN_PCT" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">CONF WIN%</th>
+<th id="ROAD_NEUTRAL" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">ROAD/NEUTRAL</th>
+<th id="AT_LARGE_BID" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">AT LARGE BID</th>
+<th id="pred" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">MODEL CHANCE TO RECEIVE AT-LARGE BID</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="gt_group_heading_row odd">
+<th colspan="11" id="2025" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">2025</th>
+</tr>
+<tr class="gt_row_group_first even">
+<td class="gt_row gt_left" headers="2025  TEAM" style="background-color: #0000FF; color: #FFFFFF">North Carolina</td>
+<td class="gt_row gt_right" headers="2025  Q1" style="background-color: #0000FF; color: #FFFFFF">6</td>
+<td class="gt_row gt_right" headers="2025  Q2" style="background-color: #0000FF; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="2025  Q3" style="background-color: #0000FF; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="2025  Q4" style="background-color: #0000FF; color: #FFFFFF">4</td>
+<td class="gt_row gt_right" headers="2025  NCSOS" style="background-color: #0000FF; color: #FFFFFF">13.40</td>
+<td class="gt_row gt_right" headers="2025  NCWIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.583</td>
+<td class="gt_row gt_right" headers="2025  CONF_WIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.650</td>
+<td class="gt_row gt_right" headers="2025  ROAD_NEUTRAL" style="background-color: #0000FF; color: #FFFFFF">7</td>
+<td class="gt_row gt_left" headers="2025  AT_LARGE_BID" style="background-color: #0000FF; color: #FFFFFF">Y</td>
+<td class="gt_row gt_right" headers="2025  pred" style="background-color: #0000FF; color: #FFFFFF">95 %</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left gt_striped" headers="2025  TEAM" style="background-color: #0000FF; color: #FFFFFF">Texas</td>
+<td class="gt_row gt_right gt_striped" headers="2025  Q1" style="background-color: #0000FF; color: #FFFFFF">1</td>
+<td class="gt_row gt_right gt_striped" headers="2025  Q2" style="background-color: #0000FF; color: #FFFFFF">3</td>
+<td class="gt_row gt_right gt_striped" headers="2025  Q3" style="background-color: #0000FF; color: #FFFFFF">2</td>
+<td class="gt_row gt_right gt_striped" headers="2025  Q4" style="background-color: #0000FF; color: #FFFFFF">7</td>
+<td class="gt_row gt_right gt_striped" headers="2025  NCSOS" style="background-color: #0000FF; color: #FFFFFF">-8.10</td>
+<td class="gt_row gt_right gt_striped" headers="2025  NCWIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.846</td>
+<td class="gt_row gt_right gt_striped" headers="2025  CONF_WIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.333</td>
+<td class="gt_row gt_right gt_striped" headers="2025  ROAD_NEUTRAL" style="background-color: #0000FF; color: #FFFFFF">4</td>
+<td class="gt_row gt_left gt_striped" headers="2025  AT_LARGE_BID" style="background-color: #0000FF; color: #FFFFFF">Y</td>
+<td class="gt_row gt_right gt_striped" headers="2025  pred" style="background-color: #0000FF; color: #FFFFFF">6 %</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="2025  TEAM" style="background-color: #0000FF; color: #FFFFFF">Xavier</td>
+<td class="gt_row gt_right" headers="2025  Q1" style="background-color: #0000FF; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="2025  Q2" style="background-color: #0000FF; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="2025  Q3" style="background-color: #0000FF; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="2025  Q4" style="background-color: #0000FF; color: #FFFFFF">6</td>
+<td class="gt_row gt_right" headers="2025  NCSOS" style="background-color: #0000FF; color: #FFFFFF">-1.10</td>
+<td class="gt_row gt_right" headers="2025  NCWIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.727</td>
+<td class="gt_row gt_right" headers="2025  CONF_WIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.650</td>
+<td class="gt_row gt_right" headers="2025  ROAD_NEUTRAL" style="background-color: #0000FF; color: #FFFFFF">4</td>
+<td class="gt_row gt_left" headers="2025  AT_LARGE_BID" style="background-color: #0000FF; color: #FFFFFF">Y</td>
+<td class="gt_row gt_right" headers="2025  pred" style="background-color: #0000FF; color: #FFFFFF">96 %</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left gt_striped" headers="2025  TEAM">Ohio State</td>
+<td class="gt_row gt_right gt_striped" headers="2025  Q1">4</td>
+<td class="gt_row gt_right gt_striped" headers="2025  Q2">1</td>
+<td class="gt_row gt_right gt_striped" headers="2025  Q3">0</td>
+<td class="gt_row gt_right gt_striped" headers="2025  Q4">6</td>
+<td class="gt_row gt_right gt_striped" headers="2025  NCSOS">3.22</td>
+<td class="gt_row gt_right gt_striped" headers="2025  NCWIN_PCT">0.727</td>
+<td class="gt_row gt_right gt_striped" headers="2025  CONF_WIN_PCT">0.450</td>
+<td class="gt_row gt_right gt_striped" headers="2025  ROAD_NEUTRAL">4</td>
+<td class="gt_row gt_left gt_striped" headers="2025  AT_LARGE_BID">N</td>
+<td class="gt_row gt_right gt_striped" headers="2025  pred">29 %</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="2025  TEAM">West Virginia</td>
+<td class="gt_row gt_right" headers="2025  Q1">4</td>
+<td class="gt_row gt_right" headers="2025  Q2">0</td>
+<td class="gt_row gt_right" headers="2025  Q3">2</td>
+<td class="gt_row gt_right" headers="2025  Q4">5</td>
+<td class="gt_row gt_right" headers="2025  NCSOS">0.98</td>
+<td class="gt_row gt_right" headers="2025  NCWIN_PCT">0.818</td>
+<td class="gt_row gt_right" headers="2025  CONF_WIN_PCT">0.500</td>
+<td class="gt_row gt_right" headers="2025  ROAD_NEUTRAL">4</td>
+<td class="gt_row gt_left" headers="2025  AT_LARGE_BID">N</td>
+<td class="gt_row gt_right" headers="2025  pred">61 %</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left gt_striped" headers="2025  TEAM">Indiana</td>
+<td class="gt_row gt_right gt_striped" headers="2025  Q1">2</td>
+<td class="gt_row gt_right gt_striped" headers="2025  Q2">1</td>
+<td class="gt_row gt_right gt_striped" headers="2025  Q3">4</td>
+<td class="gt_row gt_right gt_striped" headers="2025  Q4">4</td>
+<td class="gt_row gt_right gt_striped" headers="2025  NCSOS">1.50</td>
+<td class="gt_row gt_right gt_striped" headers="2025  NCWIN_PCT">0.818</td>
+<td class="gt_row gt_right gt_striped" headers="2025  CONF_WIN_PCT">0.500</td>
+<td class="gt_row gt_right gt_striped" headers="2025  ROAD_NEUTRAL">3</td>
+<td class="gt_row gt_left gt_striped" headers="2025  AT_LARGE_BID">N</td>
+<td class="gt_row gt_right gt_striped" headers="2025  pred">16 %</td>
+</tr>
+<tr class="gt_group_heading_row even">
+<th colspan="11" id="2024" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">2024</th>
+</tr>
+<tr class="gt_row_group_first odd">
+<td class="gt_row gt_left" headers="2024  TEAM" style="background-color: #0000FF; color: #FFFFFF">Colorado</td>
+<td class="gt_row gt_right" headers="2024  Q1" style="background-color: #0000FF; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="2024  Q2" style="background-color: #0000FF; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="2024  Q3" style="background-color: #0000FF; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="2024  Q4" style="background-color: #0000FF; color: #FFFFFF">6</td>
+<td class="gt_row gt_right" headers="2024  NCSOS" style="background-color: #0000FF; color: #FFFFFF">-1.47</td>
+<td class="gt_row gt_right" headers="2024  NCWIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.818</td>
+<td class="gt_row gt_right" headers="2024  CONF_WIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.650</td>
+<td class="gt_row gt_right" headers="2024  ROAD_NEUTRAL" style="background-color: #0000FF; color: #FFFFFF">4</td>
+<td class="gt_row gt_left" headers="2024  AT_LARGE_BID" style="background-color: #0000FF; color: #FFFFFF">Y</td>
+<td class="gt_row gt_right" headers="2024  pred" style="background-color: #0000FF; color: #FFFFFF">92 %</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="2024  TEAM" style="background-color: #0000FF; color: #FFFFFF">Virginia</td>
+<td class="gt_row gt_right gt_striped" headers="2024  Q1" style="background-color: #0000FF; color: #FFFFFF">3</td>
+<td class="gt_row gt_right gt_striped" headers="2024  Q2" style="background-color: #0000FF; color: #FFFFFF">1</td>
+<td class="gt_row gt_right gt_striped" headers="2024  Q3" style="background-color: #0000FF; color: #FFFFFF">2</td>
+<td class="gt_row gt_right gt_striped" headers="2024  Q4" style="background-color: #0000FF; color: #FFFFFF">5</td>
+<td class="gt_row gt_right gt_striped" headers="2024  NCSOS" style="background-color: #0000FF; color: #FFFFFF">-1.09</td>
+<td class="gt_row gt_right gt_striped" headers="2024  NCWIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.818</td>
+<td class="gt_row gt_right gt_striped" headers="2024  CONF_WIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.650</td>
+<td class="gt_row gt_right gt_striped" headers="2024  ROAD_NEUTRAL" style="background-color: #0000FF; color: #FFFFFF">4</td>
+<td class="gt_row gt_left gt_striped" headers="2024  AT_LARGE_BID" style="background-color: #0000FF; color: #FFFFFF">Y</td>
+<td class="gt_row gt_right gt_striped" headers="2024  pred" style="background-color: #0000FF; color: #FFFFFF">98 %</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="2024  TEAM">Pittsburgh</td>
+<td class="gt_row gt_right" headers="2024  Q1">1</td>
+<td class="gt_row gt_right" headers="2024  Q2">0</td>
+<td class="gt_row gt_right" headers="2024  Q3">4</td>
+<td class="gt_row gt_right" headers="2024  Q4">6</td>
+<td class="gt_row gt_right" headers="2024  NCSOS">-6.46</td>
+<td class="gt_row gt_right" headers="2024  NCWIN_PCT">0.818</td>
+<td class="gt_row gt_right" headers="2024  CONF_WIN_PCT">0.600</td>
+<td class="gt_row gt_right" headers="2024  ROAD_NEUTRAL">3</td>
+<td class="gt_row gt_left" headers="2024  AT_LARGE_BID">N</td>
+<td class="gt_row gt_right" headers="2024  pred">28 %</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="2024  TEAM">Oklahoma</td>
+<td class="gt_row gt_right gt_striped" headers="2024  Q1">1</td>
+<td class="gt_row gt_right gt_striped" headers="2024  Q2">3</td>
+<td class="gt_row gt_right gt_striped" headers="2024  Q3">1</td>
+<td class="gt_row gt_right gt_striped" headers="2024  Q4">8</td>
+<td class="gt_row gt_right gt_striped" headers="2024  NCSOS">-5.38</td>
+<td class="gt_row gt_right gt_striped" headers="2024  NCWIN_PCT">0.923</td>
+<td class="gt_row gt_right gt_striped" headers="2024  CONF_WIN_PCT">0.444</td>
+<td class="gt_row gt_right gt_striped" headers="2024  ROAD_NEUTRAL">4</td>
+<td class="gt_row gt_left gt_striped" headers="2024  AT_LARGE_BID">N</td>
+<td class="gt_row gt_right gt_striped" headers="2024  pred">85 %</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="2024  TEAM">Seton Hall</td>
+<td class="gt_row gt_right" headers="2024  Q1">1</td>
+<td class="gt_row gt_right" headers="2024  Q2">2</td>
+<td class="gt_row gt_right" headers="2024  Q3">2</td>
+<td class="gt_row gt_right" headers="2024  Q4">6</td>
+<td class="gt_row gt_right" headers="2024  NCSOS">-1.47</td>
+<td class="gt_row gt_right" headers="2024  NCWIN_PCT">0.636</td>
+<td class="gt_row gt_right" headers="2024  CONF_WIN_PCT">0.650</td>
+<td class="gt_row gt_right" headers="2024  ROAD_NEUTRAL">4</td>
+<td class="gt_row gt_left" headers="2024  AT_LARGE_BID">N</td>
+<td class="gt_row gt_right" headers="2024  pred">26 %</td>
+</tr>
+<tr class="gt_group_heading_row even">
+<th colspan="11" id="2023" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">2023</th>
+</tr>
+<tr class="gt_row_group_first odd">
+<td class="gt_row gt_left gt_striped" headers="2023  TEAM" style="background-color: #0000FF; color: #FFFFFF">Mississippi State</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q1" style="background-color: #0000FF; color: #FFFFFF">2</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q2" style="background-color: #0000FF; color: #FFFFFF">2</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q3" style="background-color: #0000FF; color: #FFFFFF">2</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q4" style="background-color: #0000FF; color: #FFFFFF">7</td>
+<td class="gt_row gt_right gt_striped" headers="2023  NCSOS" style="background-color: #0000FF; color: #FFFFFF">-3.89</td>
+<td class="gt_row gt_right gt_striped" headers="2023  NCWIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.923</td>
+<td class="gt_row gt_right gt_striped" headers="2023  CONF_WIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.444</td>
+<td class="gt_row gt_right gt_striped" headers="2023  ROAD_NEUTRAL" style="background-color: #0000FF; color: #FFFFFF">6</td>
+<td class="gt_row gt_left gt_striped" headers="2023  AT_LARGE_BID" style="background-color: #0000FF; color: #FFFFFF">Y</td>
+<td class="gt_row gt_right gt_striped" headers="2023  pred" style="background-color: #0000FF; color: #FFFFFF">83 %</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="2023  TEAM" style="background-color: #0000FF; color: #FFFFFF">Arizona State</td>
+<td class="gt_row gt_right" headers="2023  Q1" style="background-color: #0000FF; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="2023  Q2" style="background-color: #0000FF; color: #FFFFFF">3</td>
+<td class="gt_row gt_right" headers="2023  Q3" style="background-color: #0000FF; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="2023  Q4" style="background-color: #0000FF; color: #FFFFFF">6</td>
+<td class="gt_row gt_right" headers="2023  NCSOS" style="background-color: #0000FF; color: #FFFFFF">0.78</td>
+<td class="gt_row gt_right" headers="2023  NCWIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.818</td>
+<td class="gt_row gt_right" headers="2023  CONF_WIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.550</td>
+<td class="gt_row gt_right" headers="2023  ROAD_NEUTRAL" style="background-color: #0000FF; color: #FFFFFF">6</td>
+<td class="gt_row gt_left" headers="2023  AT_LARGE_BID" style="background-color: #0000FF; color: #FFFFFF">Y</td>
+<td class="gt_row gt_right" headers="2023  pred" style="background-color: #0000FF; color: #FFFFFF">79 %</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left gt_striped" headers="2023  TEAM" style="background-color: #0000FF; color: #FFFFFF">Pittsburgh</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q1" style="background-color: #0000FF; color: #FFFFFF">2</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q2" style="background-color: #0000FF; color: #FFFFFF">3</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q3" style="background-color: #0000FF; color: #FFFFFF">0</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q4" style="background-color: #0000FF; color: #FFFFFF">6</td>
+<td class="gt_row gt_right gt_striped" headers="2023  NCSOS" style="background-color: #0000FF; color: #FFFFFF">-2.73</td>
+<td class="gt_row gt_right gt_striped" headers="2023  NCWIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.636</td>
+<td class="gt_row gt_right gt_striped" headers="2023  CONF_WIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.700</td>
+<td class="gt_row gt_right gt_striped" headers="2023  ROAD_NEUTRAL" style="background-color: #0000FF; color: #FFFFFF">4</td>
+<td class="gt_row gt_left gt_striped" headers="2023  AT_LARGE_BID" style="background-color: #0000FF; color: #FFFFFF">Y</td>
+<td class="gt_row gt_right gt_striped" headers="2023  pred" style="background-color: #0000FF; color: #FFFFFF">93 %</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="2023  TEAM">Rutgers</td>
+<td class="gt_row gt_right" headers="2023  Q1">1</td>
+<td class="gt_row gt_right" headers="2023  Q2">0</td>
+<td class="gt_row gt_right" headers="2023  Q3">4</td>
+<td class="gt_row gt_right" headers="2023  Q4">6</td>
+<td class="gt_row gt_right" headers="2023  NCSOS">-7.51</td>
+<td class="gt_row gt_right" headers="2023  NCWIN_PCT">0.727</td>
+<td class="gt_row gt_right" headers="2023  CONF_WIN_PCT">0.500</td>
+<td class="gt_row gt_right" headers="2023  ROAD_NEUTRAL">2</td>
+<td class="gt_row gt_left" headers="2023  AT_LARGE_BID">N</td>
+<td class="gt_row gt_right" headers="2023  pred">1 %</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left gt_striped" headers="2023  TEAM">Oklahoma State</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q1">1</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q2">3</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q3">4</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q4">5</td>
+<td class="gt_row gt_right gt_striped" headers="2023  NCSOS">0.46</td>
+<td class="gt_row gt_right gt_striped" headers="2023  NCWIN_PCT">0.692</td>
+<td class="gt_row gt_right gt_striped" headers="2023  CONF_WIN_PCT">0.444</td>
+<td class="gt_row gt_right gt_striped" headers="2023  ROAD_NEUTRAL">6</td>
+<td class="gt_row gt_left gt_striped" headers="2023  AT_LARGE_BID">N</td>
+<td class="gt_row gt_right gt_striped" headers="2023  pred">2 %</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="2023  TEAM">North Carolina</td>
+<td class="gt_row gt_right" headers="2023  Q1">3</td>
+<td class="gt_row gt_right" headers="2023  Q2">3</td>
+<td class="gt_row gt_right" headers="2023  Q3">3</td>
+<td class="gt_row gt_right" headers="2023  Q4">2</td>
+<td class="gt_row gt_right" headers="2023  NCSOS">6.63</td>
+<td class="gt_row gt_right" headers="2023  NCWIN_PCT">0.727</td>
+<td class="gt_row gt_right" headers="2023  CONF_WIN_PCT">0.550</td>
+<td class="gt_row gt_right" headers="2023  ROAD_NEUTRAL">6</td>
+<td class="gt_row gt_left" headers="2023  AT_LARGE_BID">N</td>
+<td class="gt_row gt_right" headers="2023  pred">64 %</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left gt_striped" headers="2023  TEAM">Clemson</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q1">1</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q2">1</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q3">3</td>
+<td class="gt_row gt_right gt_striped" headers="2023  Q4">6</td>
+<td class="gt_row gt_right gt_striped" headers="2023  NCSOS">-5.75</td>
+<td class="gt_row gt_right gt_striped" headers="2023  NCWIN_PCT">0.727</td>
+<td class="gt_row gt_right gt_striped" headers="2023  CONF_WIN_PCT">0.700</td>
+<td class="gt_row gt_right gt_striped" headers="2023  ROAD_NEUTRAL">5</td>
+<td class="gt_row gt_left gt_striped" headers="2023  AT_LARGE_BID">N</td>
+<td class="gt_row gt_right gt_striped" headers="2023  pred">68 %</td>
+</tr>
+<tr class="gt_group_heading_row even">
+<th colspan="11" id="2022" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">2022</th>
+</tr>
+<tr class="gt_row_group_first odd">
+<td class="gt_row gt_left" headers="2022  TEAM" style="background-color: #0000FF; color: #FFFFFF">Indiana</td>
+<td class="gt_row gt_right" headers="2022  Q1" style="background-color: #0000FF; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="2022  Q2" style="background-color: #0000FF; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="2022  Q3" style="background-color: #0000FF; color: #FFFFFF">0</td>
+<td class="gt_row gt_right" headers="2022  Q4" style="background-color: #0000FF; color: #FFFFFF">7</td>
+<td class="gt_row gt_right" headers="2022  NCSOS" style="background-color: #0000FF; color: #FFFFFF">-6.23</td>
+<td class="gt_row gt_right" headers="2022  NCWIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.900</td>
+<td class="gt_row gt_right" headers="2022  CONF_WIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.450</td>
+<td class="gt_row gt_right" headers="2022  ROAD_NEUTRAL" style="background-color: #0000FF; color: #FFFFFF">2</td>
+<td class="gt_row gt_left" headers="2022  AT_LARGE_BID" style="background-color: #0000FF; color: #FFFFFF">Y</td>
+<td class="gt_row gt_right" headers="2022  pred" style="background-color: #0000FF; color: #FFFFFF">47 %</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="2022  TEAM" style="background-color: #0000FF; color: #FFFFFF">Notre Dame</td>
+<td class="gt_row gt_right gt_striped" headers="2022  Q1" style="background-color: #0000FF; color: #FFFFFF">5</td>
+<td class="gt_row gt_right gt_striped" headers="2022  Q2" style="background-color: #0000FF; color: #FFFFFF">0</td>
+<td class="gt_row gt_right gt_striped" headers="2022  Q3" style="background-color: #0000FF; color: #FFFFFF">0</td>
+<td class="gt_row gt_right gt_striped" headers="2022  Q4" style="background-color: #0000FF; color: #FFFFFF">5</td>
+<td class="gt_row gt_right gt_striped" headers="2022  NCSOS" style="background-color: #0000FF; color: #FFFFFF">2.70</td>
+<td class="gt_row gt_right gt_striped" headers="2022  NCWIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.600</td>
+<td class="gt_row gt_right gt_striped" headers="2022  CONF_WIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.750</td>
+<td class="gt_row gt_right gt_striped" headers="2022  ROAD_NEUTRAL" style="background-color: #0000FF; color: #FFFFFF">5</td>
+<td class="gt_row gt_left gt_striped" headers="2022  AT_LARGE_BID" style="background-color: #0000FF; color: #FFFFFF">Y</td>
+<td class="gt_row gt_right gt_striped" headers="2022  pred" style="background-color: #0000FF; color: #FFFFFF">97 %</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="2022  TEAM" style="background-color: #0000FF; color: #FFFFFF">Rutgers</td>
+<td class="gt_row gt_right" headers="2022  Q1" style="background-color: #0000FF; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="2022  Q2" style="background-color: #0000FF; color: #FFFFFF">1</td>
+<td class="gt_row gt_right" headers="2022  Q3" style="background-color: #0000FF; color: #FFFFFF">2</td>
+<td class="gt_row gt_right" headers="2022  Q4" style="background-color: #0000FF; color: #FFFFFF">6</td>
+<td class="gt_row gt_right" headers="2022  NCSOS" style="background-color: #0000FF; color: #FFFFFF">-10.43</td>
+<td class="gt_row gt_right" headers="2022  NCWIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.600</td>
+<td class="gt_row gt_right" headers="2022  CONF_WIN_PCT" style="background-color: #0000FF; color: #FFFFFF">0.600</td>
+<td class="gt_row gt_right" headers="2022  ROAD_NEUTRAL" style="background-color: #0000FF; color: #FFFFFF">3</td>
+<td class="gt_row gt_left" headers="2022  AT_LARGE_BID" style="background-color: #0000FF; color: #FFFFFF">Y</td>
+<td class="gt_row gt_right" headers="2022  pred" style="background-color: #0000FF; color: #FFFFFF">2 %</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="2022  TEAM">Texas A&amp;M</td>
+<td class="gt_row gt_right gt_striped" headers="2022  Q1">3</td>
+<td class="gt_row gt_right gt_striped" headers="2022  Q2">0</td>
+<td class="gt_row gt_right gt_striped" headers="2022  Q3">2</td>
+<td class="gt_row gt_right gt_striped" headers="2022  Q4">7</td>
+<td class="gt_row gt_right gt_striped" headers="2022  NCSOS">-5.58</td>
+<td class="gt_row gt_right gt_striped" headers="2022  NCWIN_PCT">0.833</td>
+<td class="gt_row gt_right gt_striped" headers="2022  CONF_WIN_PCT">0.500</td>
+<td class="gt_row gt_right gt_striped" headers="2022  ROAD_NEUTRAL">5</td>
+<td class="gt_row gt_left gt_striped" headers="2022  AT_LARGE_BID">N</td>
+<td class="gt_row gt_right gt_striped" headers="2022  pred">56 %</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="2022  TEAM">Oklahoma</td>
+<td class="gt_row gt_right" headers="2022  Q1">2</td>
+<td class="gt_row gt_right" headers="2022  Q2">3</td>
+<td class="gt_row gt_right" headers="2022  Q3">2</td>
+<td class="gt_row gt_right" headers="2022  Q4">6</td>
+<td class="gt_row gt_right" headers="2022  NCSOS">-2.04</td>
+<td class="gt_row gt_right" headers="2022  NCWIN_PCT">0.769</td>
+<td class="gt_row gt_right" headers="2022  CONF_WIN_PCT">0.389</td>
+<td class="gt_row gt_right" headers="2022  ROAD_NEUTRAL">6</td>
+<td class="gt_row gt_left" headers="2022  AT_LARGE_BID">N</td>
+<td class="gt_row gt_right" headers="2022  pred">12 %</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_sourcenotes odd">
+<td colspan="11" class="gt_sourcenote"><strong>By:</strong> Simon Kerr | <strong>Source:</strong> WarrenNolan, KenPom &amp; ESPN</td>
+</tr>
+</tfoot>
+
+</table>
+
 </div>
+</div>
+</div>
+<p>The 2025 North Carolina team is present here again. The model clearly believes this team should have made the NCAA Tournament. The Tar Heels made up for their mediocre non-conference record with an above-average conference performance. The outliers are interesting in this table. In 2025, Texas was the third-to-last team selected to the field. The model gives them only a six percent chance of making the tournament. If the conference winning percentage is the only factor, then they should not make March Madness. Taking a step back, Texas is in the SEC, which had the most dominant conference in college basketball history last season. While their winning percentage was very low, the selection committee believed the quality of their opponents was more important than their record.</p>
+<p>The other big outlier is Rutgers in 2022. This team was given a two percent chance of making March Madness! Once again, the model examines the mediocre winning percentages combined with the lack of quadrant one and two games. A 6-4 non-conference record with the second weakest schedule of Power Five teams? No way this team should make the tournament. However, the selection committee included Rutgers in the tournament that year because of its wins in conference play. They had multiple wins against ranked teams, making them a tournament team in the committee’s eyes.</p>
+<p>Using the model moving forward, teams may benefit from weaker non-conference schedules if they believe they will be above average in conference play. However, a tougher conference may require a team to schedule tougher teams to bolster their resume for the NCAA tournament. In the end, the number of games a team wins is the most important factor for a team to play in the postseason. Teams can use their non-conference schedules to achieve higher win totals or improve the quality of their opponents.</p>
 
 
 
