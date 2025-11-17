@@ -190,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Power Five basketball teams focus on making March Madness. For this evaluation, the Power Five includes the ACC, Big East, Big 12, Big 10, and SEC. The Pac-12 is also included from 2022-2024 (R.I.P.). The season is made up of 31 regular-season games. Depending on the conference, teams have either 11 or 13 games to schedule to strengthen their tournament resumes. Coaching staffs adopt different philosophies when choosing their opponents.</p>
+<p>Power 5 basketball teams focus on making March Madness. For this evaluation, the Power 5 includes the ACC, Big East, Big 12, Big 10, and SEC. The Pac-12 is also included from 2022-2024 (R.I.P.). The season is made up of 31 regular-season games. Depending on the conference, teams have either 11 or 13 games to schedule to strengthen their tournament resumes. Coaching staffs adopt different philosophies when choosing their opponents.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="fl">2022.25</span>, <span class="at">y=</span><span class="sc">-</span><span class="fl">11.5</span>, <span class="at">label=</span><span class="st">"Northwestern"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x=</span><span class="dv">2023</span>, <span class="at">y=</span><span class="sc">-</span><span class="dv">10</span>, <span class="at">label=</span><span class="st">"Providence"</span>, <span class="at">colour=</span><span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Power 5 Teams Schedule Similarily from Year to Year"</span>,</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Focusing on the Easiest and Hardest Schedule Each Year"</span>,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Focusing on the easiest and hardest schedule each year."</span>,</span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Source: KenPom | By Simon Kerr"</span>) <span class="sc">+</span></span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
@@ -245,11 +245,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Teams like North Carolina and Alabama, led by Hubert Davis and Nate Oats, respectively, have some of the toughest schedules year after year. Others, like Minnesota and Northwestern, have much easier non-conference opponents. These different approaches can both lead to tournament appearances. Tougher schedules allow for more losses because opponents are better. North Carolina went 7-5 out of conference in 2025, playing the hardest non-conference schedule of any Power Five team. Half of their opponents were in the first quadrant of the NCAA Evaluation Tool (NET) rankings. After a mediocre non-conference performance, the Tar Heels finished ACC play with a 13-7 record, tied for fourth. Ultimately, North Carolina made the NCAA Tournament, proving that a tough out-of-conference schedule with multiple losses was a successful formula.</p>
-<p>The opposite strategy is less forgiving. In 2025, Georgetown, led by Ed Cooley, went 9-2 out of conference, playing the easiest schedule of all Power Five teams. While North Carolina packed their schedule with quadrant one games, Georgetown played eight quadrant four games. The Hoyas then went 8-12 in the Big East, leading to a seventh-place finish in the conference. An overall record of 17-14 with weak non-conference opponents resulted in Cooley’s team missing March Madness. Fewer opportunities for big wins hurt Georgetown when they had a poor conference performance.</p>
+<p>Teams like North Carolina and Alabama, led by Hubert Davis and Nate Oats, respectively, have some of the toughest schedules year after year. Others, like Minnesota and Northwestern, have much easier non-conference opponents. These different approaches can both lead to tournament appearances. Tougher schedules allow for more losses because opponents are better. North Carolina went 7-5 out of conference in 2025, playing the hardest non-conference schedule of any Power 5 team. Half of their opponents were in the first quadrant of the NCAA Evaluation Tool (NET) rankings. After a mediocre non-conference performance, the Tar Heels finished ACC play with a 13-7 record, tied for fourth. Ultimately, North Carolina made the NCAA Tournament, proving that a tough out-of-conference schedule with multiple losses was a successful formula.</p>
+<p>The opposite strategy is less forgiving. In 2025, Georgetown, led by Ed Cooley, went 9-2 out of conference, playing the easiest schedule of all Power 5 teams. While North Carolina packed their schedule with quadrant one games, Georgetown played eight quadrant four games. The Hoyas then went 8-12 in the Big East, leading to a seventh-place finish in the conference. An overall record of 17-14 with weak non-conference opponents resulted in Cooley’s team missing March Madness. Fewer opportunities for big wins hurt Georgetown when they had a poor conference performance.</p>
 <p>To determine the most important factors for making the NCAA Tournament, a multiple binomial logistic regression was created. Nine potential variables were available to the model. After using a stepwise selection process, five variables were selected: conference winning percentage, non-conference winning percentage, and the number of games in quadrants one, two, and four. These chosen variables are the most important factors in determining if a team receives an at-large bid. The model created states that a team receiving an at-large bid is 75% explained by these five variables. The formula for the model is:</p>
 <p>-34.9273 + 23.3126*(Conference Winning Percentage) + 19.5297*(Non-Conference Winning Percentage) + 1.3951*(Q1 Games) + 1.1434*(Q2 Games) + .4345*(Q4 Games).</p>
-<p>Comparing the different teams would be challenging, so instead, the non-conference winning percentage was used as a predictor for the probability of a team receiving an at-large bid. Since there are multiple variables, the others must be held constant to demonstrate the effect of non-conference winning percentage. This factor was chosen because teams can construct their out-of-conference schedules to increase their winning percentage. Teams have no control over their opponents during conference play. Using the average from the dataset, this new model assumes a team goes .500 in conference play, and plays three quadrant one games, two quadrant two games, and six quadrant four games.</p>
+<p>Comparing the different teams would be challenging, so instead, the non-conference winning percentage was used as a predictor for the probability of a team receiving an at-large bid. Since there are multiple variables, the others must be held constant to demonstrate the effect of non-conference winning percentage. This factor was chosen because teams can construct their out-of-conference schedules to increase their winning percentage. Teams have no control over their opponents during conference play. Using the average from the dataset, this new model assumes a team goes .500 in conference play, and plays 3 quadrant 1 games, 2 quadrant 2 games, and 6 quadrant 4 games.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -361,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>zero_wins, <span class="fu">aes</span>(<span class="at">x=</span>NCWIN_PCT, <span class="at">y=</span>pred), <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
 <span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>zero_wins, <span class="fu">aes</span>(<span class="at">label =</span> <span class="st">"0-11"</span>, NCWIN_PCT, pred), <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
 <span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Winning Non-Conference Games is Necessary to Receive an At-Large Bid"</span>,</span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Assuming an even conference record, three quad 1 games, two quad 2 games, and six quad 4 games"</span>,</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Assuming an even conference record, 3 quad 1 games, 2 quad 2 games, and 6 quad 4 games"</span>,</span>
 <span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Source: WarrenNolan, KenPom &amp; ESPN | By Simon Kerr"</span>,</span>
 <span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predicted Probability of At-Large Bid"</span>,</span>
 <span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Non-Conference Winning Percentage"</span>) <span class="sc">+</span></span>
@@ -381,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>If a team has an even conference record, its non-conference winning percentage becomes very important. Going undefeated in non-conference play almost guarantees an at-large bid, according to the model used. But dropping four games decreases the probability of receiving an at-large bid below fifteen percent.</p>
+<p>If a team has an even conference record, its non-conference winning percentage becomes very important. Going undefeated in non-conference play almost guarantees an at-large bid, according to the model used. But dropping 4 games decreases the probability of receiving an at-large bid below 15%.</p>
 <p>After examining all of these moving parts, how have recent bubble teams stood out to the selection committee?</p>
 <div class="cell">
 <details class="code-fold">
@@ -439,23 +439,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="rntbthvmau" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rntbthvmau table {
+<div id="hkjazudgxq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hkjazudgxq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rntbthvmau thead, #rntbthvmau tbody, #rntbthvmau tfoot, #rntbthvmau tr, #rntbthvmau td, #rntbthvmau th {
+#hkjazudgxq thead, #hkjazudgxq tbody, #hkjazudgxq tfoot, #hkjazudgxq tr, #hkjazudgxq td, #hkjazudgxq th {
   border-style: none;
 }
 
-#rntbthvmau p {
+#hkjazudgxq p {
   margin: 0;
   padding: 0;
 }
 
-#rntbthvmau .gt_table {
+#hkjazudgxq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -481,12 +481,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#rntbthvmau .gt_caption {
+#hkjazudgxq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rntbthvmau .gt_title {
+#hkjazudgxq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -498,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#rntbthvmau .gt_subtitle {
+#hkjazudgxq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -510,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#rntbthvmau .gt_heading {
+#hkjazudgxq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -522,13 +522,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rntbthvmau .gt_bottom_border {
+#hkjazudgxq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rntbthvmau .gt_col_headings {
+#hkjazudgxq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -543,7 +543,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rntbthvmau .gt_col_heading {
+#hkjazudgxq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -563,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#rntbthvmau .gt_column_spanner_outer {
+#hkjazudgxq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -575,15 +575,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#rntbthvmau .gt_column_spanner_outer:first-child {
+#hkjazudgxq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rntbthvmau .gt_column_spanner_outer:last-child {
+#hkjazudgxq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rntbthvmau .gt_column_spanner {
+#hkjazudgxq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -595,11 +595,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#rntbthvmau .gt_spanner_row {
+#hkjazudgxq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rntbthvmau .gt_group_heading {
+#hkjazudgxq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -625,7 +625,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#rntbthvmau .gt_empty_group_heading {
+#hkjazudgxq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -640,15 +640,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#rntbthvmau .gt_from_md > :first-child {
+#hkjazudgxq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rntbthvmau .gt_from_md > :last-child {
+#hkjazudgxq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rntbthvmau .gt_row {
+#hkjazudgxq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -667,7 +667,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#rntbthvmau .gt_stub {
+#hkjazudgxq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -680,7 +680,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rntbthvmau .gt_stub_row_group {
+#hkjazudgxq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -694,15 +694,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#rntbthvmau .gt_row_group_first td {
+#hkjazudgxq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rntbthvmau .gt_row_group_first th {
+#hkjazudgxq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rntbthvmau .gt_summary_row {
+#hkjazudgxq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -712,16 +712,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rntbthvmau .gt_first_summary_row {
+#hkjazudgxq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rntbthvmau .gt_first_summary_row.thick {
+#hkjazudgxq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rntbthvmau .gt_last_summary_row {
+#hkjazudgxq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -731,7 +731,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rntbthvmau .gt_grand_summary_row {
+#hkjazudgxq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -741,7 +741,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rntbthvmau .gt_first_grand_summary_row {
+#hkjazudgxq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -751,7 +751,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#rntbthvmau .gt_last_grand_summary_row_top {
+#hkjazudgxq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -761,11 +761,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rntbthvmau .gt_striped {
+#hkjazudgxq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rntbthvmau .gt_table_body {
+#hkjazudgxq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -774,7 +774,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#rntbthvmau .gt_footnotes {
+#hkjazudgxq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -788,7 +788,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rntbthvmau .gt_footnote {
+#hkjazudgxq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -797,7 +797,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rntbthvmau .gt_sourcenotes {
+#hkjazudgxq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -811,7 +811,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#rntbthvmau .gt_sourcenote {
+#hkjazudgxq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -819,72 +819,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#rntbthvmau .gt_left {
+#hkjazudgxq .gt_left {
   text-align: left;
 }
 
-#rntbthvmau .gt_center {
+#hkjazudgxq .gt_center {
   text-align: center;
 }
 
-#rntbthvmau .gt_right {
+#hkjazudgxq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rntbthvmau .gt_font_normal {
+#hkjazudgxq .gt_font_normal {
   font-weight: normal;
 }
 
-#rntbthvmau .gt_font_bold {
+#hkjazudgxq .gt_font_bold {
   font-weight: bold;
 }
 
-#rntbthvmau .gt_font_italic {
+#hkjazudgxq .gt_font_italic {
   font-style: italic;
 }
 
-#rntbthvmau .gt_super {
+#hkjazudgxq .gt_super {
   font-size: 65%;
 }
 
-#rntbthvmau .gt_footnote_marks {
+#hkjazudgxq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rntbthvmau .gt_asterisk {
+#hkjazudgxq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rntbthvmau .gt_indent_1 {
+#hkjazudgxq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rntbthvmau .gt_indent_2 {
+#hkjazudgxq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rntbthvmau .gt_indent_3 {
+#hkjazudgxq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rntbthvmau .gt_indent_4 {
+#hkjazudgxq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rntbthvmau .gt_indent_5 {
+#hkjazudgxq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rntbthvmau .katex-display {
+#hkjazudgxq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rntbthvmau div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hkjazudgxq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1234,8 +1234,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The 2025 North Carolina team is present here again. The model clearly believes this team should have made the NCAA Tournament. The Tar Heels made up for their mediocre non-conference record with an above-average conference performance. The outliers are interesting in this table. In 2025, Texas was the third-to-last team selected to the field. The model gives them only a six percent chance of making the tournament. If the conference winning percentage is the only factor, then they should not make March Madness. Taking a step back, Texas is in the SEC, which had the most dominant conference in college basketball history last season. While their winning percentage was very low, the selection committee believed the quality of their opponents was more important than their record.</p>
-<p>The other big outlier is Rutgers in 2022. This team was given a two percent chance of making March Madness! Once again, the model examines the mediocre winning percentages combined with the lack of quadrant one and two games. A 6-4 non-conference record with the second weakest schedule of Power Five teams? No way this team should make the tournament. However, the selection committee included Rutgers in the tournament that year because of its wins in conference play. They had multiple wins against ranked teams, making them a tournament team in the committee’s eyes.</p>
+<p>The 2025 North Carolina team is present here again. The model clearly believes this team should have made the NCAA Tournament. The Tar Heels made up for their mediocre non-conference record with an above-average conference performance. The outliers are interesting in this table. In 2025, Texas was the third-to-last team selected to the field. The model gives them only a 6% chance of making the tournament. If the conference winning percentage is the only factor, then they should not make March Madness. Taking a step back, Texas is in the SEC, which had the most dominant conference in college basketball history last season. While their winning percentage was very low, the selection committee believed the quality of their opponents was more important than their record.</p>
+<p>The other big outlier is Rutgers in 2022. This team was given a 2% chance of making March Madness! Once again, the model examines the mediocre winning percentages combined with the lack of quadrant one and two games. A 6-4 non-conference record with the second weakest schedule of Power 5 teams? No way this team should make the tournament. However, the selection committee included Rutgers in the tournament that year because of its wins in conference play. They had multiple wins against ranked teams, making them a tournament team in the committee’s eyes.</p>
 <p>Using the model moving forward, teams may benefit from weaker non-conference schedules if they believe they will be above average in conference play. However, a tougher conference may require a team to schedule tougher teams to bolster their resume for the NCAA tournament. In the end, the number of games a team wins is the most important factor for a team to play in the postseason. Teams can use their non-conference schedules to achieve higher win totals or improve the quality of their opponents.</p>
 
 
